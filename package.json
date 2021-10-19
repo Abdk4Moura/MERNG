@@ -1,9 +1,9 @@
 {
-  "name": "MERNG",
+  "name": "merng",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
+    "serve": "node index",
     "start": "nodemon index"
   },
   "keywords": [],
@@ -21,5 +21,14 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abdk4Moura/MERNG.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Abdk4Moura/MERNG/issues"
+  },
+  "homepage": "https://github.com/Abdk4Moura/MERNG#readme",
+  "description": ""
 }
