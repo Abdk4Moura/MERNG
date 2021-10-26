@@ -41,9 +41,9 @@ module.exports = {
 
             const post = await newPost.save();
 
-            context.pubsub.publish(newPost, {
-                newPost: post
-            })
+            // context.pubsub.publish(newPost, {
+            //     newPost: post
+            // })
 
             return post
         },

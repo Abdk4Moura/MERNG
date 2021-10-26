@@ -25,7 +25,3 @@ Questions for this session:
 - Fixed ```Error *``` of the previous log:
     - It was discovered that the cause of the error was in the index.js file.
     - The error was corrected by just adding parentheses to the 'req' object. [//And that was strange]
-
-
-
-
