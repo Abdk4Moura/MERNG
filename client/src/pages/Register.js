@@ -1,38 +1,36 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Form, Button } from "semantic-ui-react";
 import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
-import useForm from "../utils/hooks";
+import { AuthContext } from "../context/auth";
+import { useForm } from "../utils/hooks";
 
 function Register(props) {
+  const context = useContext(AuthContext);
   const [errors, setErrors] = useState({});
-  const [values, setValues] = useState({
+
+  const { onChange, onSubmit, values } = useForm(registerUser, {
     username: "",
     password: "",
     confirmPassword: "",
     email: "",
   });
 
-  const onChange = (event) => {
-    setValues({ ...values, [event.target.name]: event.target.value });
-  };
-
   const [addUser, { loading }] = useMutation(REGISTER_USER, {
-    update(_, result) {
-      console.log(result);
+    update(_, { data: { register: userData } }) {
+      context.login(userData);
       props.history.push("/"); // trying to understand why the props has an history prop
     },
     onError(err) {
-      console.log(err.graphQLErrors[0].extensions.exception.errors);
-      setErrors(err.graphQLErrors[0].extensions.exception.errors);
+      setErrors(err.graphQLErrors[0].extensions.errors);
     },
     variables: values,
   });
 
-  const onSubmit = (event) => {
+  function registerUser() {
     addUser();
-  };
+  }
 
   return (
     <div className="form-container">

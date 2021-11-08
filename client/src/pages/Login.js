@@ -1,31 +1,40 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Form, Button } from "semantic-ui-react";
 import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
+import { AuthContext } from "../context/auth";
 import { useForm } from "../utils/hooks";
 
 function Login(props) {
-  const [errors, setErrors] = useState({});
-
-  const { onChange, onSubmit, values } = useForm(loginUserCallback, {
+  const context = useContext(AuthContext);
+  const initialState = {
     username: "",
     password: "",
-  });
+  };
+
+  const [errors, setErrors] = useState({});
+  console.log(useState());
+
+  const { onChange, onSubmit, values } = useForm(
+    loginUserCallback,
+    initialState
+  );
 
   const [loginUser, { loading }] = useMutation(LOGIN_USER, {
-    update(_, result) {
+    update(_, { data: { login: userData } }) {
+      context.login(userData);
       props.history.push("/"); // trying to understand why the props has an history prop
     },
     onError(err) {
-      setErrors(err.graphQLErrors[0].extensions.exception.errors);
+      setErrors(err.graphQLErrors[0].extensions.errors);
     },
     variables: values,
   });
 
-  const loginUserCallback = (event) => {
+  function loginUserCallback() {
     loginUser();
-  };
+  }
 
   return (
     <div className="form-container">

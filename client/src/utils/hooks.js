@@ -1,7 +1,6 @@
-/* eslint-disable import/no-anonymous-default-export */
 import { useState } from "react";
 
-export default function (callback, initialState = {}) {
+const useForm = (callback, initialState = {}) => {
   const [values, setValues] = useState(initialState);
 
   const onChange = (event) => {
@@ -18,4 +17,6 @@ export default function (callback, initialState = {}) {
     onSubmit,
     values,
   };
-}
+};
+
+export { useForm };
