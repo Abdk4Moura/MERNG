@@ -10,20 +10,20 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "apollo-server": "^3.1.2",
-    "apollo-server-core": "^3.3.0",
-    "apollo-server-express": "^3.1.2",
+    "apollo-server": "^3.5.0",
+    "apollo-server-core": "^3.5.0",
+    "apollo-server-express": "^3.5.0",
     "bcryptjs": "^2.4.3",
-    "graphql": "^15.6.1",
+    "graphql": "^16.0.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.13.6",
+    "mongoose": "^6.0.12",
     "pubsub": "^3.2.1",
-    "react-router-dom": "^5.3.0",
+    "react-router-dom": "^6.0.2",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.4"
   },
   "devDependencies": {
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.15"
   },
   "repository": {
     "type": "git",
